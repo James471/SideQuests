@@ -1,0 +1,82 @@
+<!Doctype html>
+    <head>
+        <title>Hope</title>
+        <style  type="text/css">
+            .button {
+                background-color: #1c87c9;
+                -webkit-border-radius: 60px;
+                border-radius: 60px;
+                border: none;
+                color: #eeeeee;
+                cursor: pointer;
+                display: inline-block;
+                font-family: sans-serif;
+                font-size: 20px;
+                padding: 5px 15px;
+                text-align: center;
+                text-decoration: none;
+            }
+            @keyframes glowing {
+                0% {
+                background-color: #2ba805;
+                box-shadow: 0 0 5px #2ba805;
+                }
+                50% {
+                background-color: #49e819;
+                box-shadow: 0 0 20px #49e819;
+                }
+                100% {
+                background-color: #2ba805;
+                box-shadow: 0 0 5px #2ba805;
+                }
+            }
+            .button {
+                animation: glowing 1300ms infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script crossorigin="anonymous">
+            function myFunction() {
+                console.log("If everything goes right, the password will appear in the next line");
+                const firebaseConfig = {
+
+                    apiKey: "AIzaSyDmLHCnhNXCI-vW978LrYjo-j2-zp_lQgk",
+
+                    authDomain: "labyrinthsidequest-2.firebaseapp.com",
+
+                    projectId: "labyrinthsidequest-2",
+
+                    storageBucket: "labyrinthsidequest-2.appspot.com",
+
+                    messagingSenderId: "384025237022",
+
+                    appId: "1:384025237022:web:ef0e1db323258640eb400f"
+
+                };
+                firebase.initializeApp(firebaseConfig);
+                var db = firebase.firestore();
+                db.collection("collection").doc("document")
+                    .get()
+                    .then(function (doc){
+                        if(doc.exists)
+                            console.log(doc.get("Password"));
+                        else
+                            console.log("Oops");
+                    })
+                    .catch(function (err){
+                        console.log(err);
+                    });
+            }
+            
+        </script>
+
+        <img src="labyrinth.png" style="margin-left: 25%;">
+        <br>
+        <button id="button" style="margin-left: 25%" class="button" onclick="myFuncton()">Click Me for the Password</button>
+
+    </body>
+
+</!Doctype>
