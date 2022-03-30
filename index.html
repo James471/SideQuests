@@ -61,10 +61,13 @@
                 db.collection("collection").doc("document")
                     .get()
                     .then(function (doc){
-                        if(doc.exists)
+                        if(doc.exists){
                             console.log(doc.get("Password"));
+                            console.log("The key to my heart is-");
+                            console.log(doc.get("Key to my heart"));
+                        }
                         else
-                            console.log("Oops");
+                            console.log("Oops, better report this to the developer, cos somebody fucked up.");
                     })
                     .catch(function (err){
                         console.log(err);
